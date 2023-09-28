@@ -66,7 +66,7 @@ public class TestCases {
         driver.get("https://www.amazon.in/");
         Thread.sleep(2000); //crio team
        WebElement searchbar=driver.findElement(By.xpath("//*[@id='twotabsearchtextbox']"));
-       searchbar.sendKeys(laptop);
+       searchbar.sendKeys("laptop");
        Thread.sleep(2000);
 
        System.out.println(""+searchbar);
@@ -79,7 +79,7 @@ public class TestCases {
       String laps=laptopDescription.getText();
       System.out.println("2:- "+laps);
      
-       if(laps.contains("laptop"));
+       if(laps.contains("Laptop"));
        {
         System.out.println("The product description contains the term laptop");
        }
@@ -95,7 +95,7 @@ public class TestCases {
         System.out.println("Start Test case: testCase03");
         driver.get("https://www.amazon.in");
         Thread.sleep(2000);
-        WebElement NavigationMenu=driver.findElement(By.xpath("//*[@id='twotabsearchtextbox']"));
+        WebElement NavigationMenu=driver.findElement(By.xpath("//*[@id='nav-xshop']/a[9]"));
         Thread.sleep(2000);
         NavigationMenu.click();
         Thread.sleep(2000);
