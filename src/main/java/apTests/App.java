@@ -4,15 +4,24 @@
  */
 package apTests;
 import java.net.MalformedURLException;
+import org.openqa.selenium.By;
 
 
 public class App {
     public void getGreeting() throws InterruptedException, MalformedURLException {
         TestCases tests = new TestCases(); // Initialize your test class
+        
+
+
+      //  driver.findelement(By.id("twotabsearchtextbox")).sendkeys(laptop);
+
 
         //TODO: call your test case functions one after other here
 
-        tests.testCase01();
+      // tests.testCase01();
+      tests.testCase02("laptop");
+      //  tests.testCase03();
+
 
         //END Tests
 

@@ -8,7 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 //Selenium Imports
 import java.util.logging.Level;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -43,11 +45,67 @@ public class TestCases {
 
     }
 
+    
+
     public void testCase01() {
         System.out.println("Start Test case: testCase01");
-        driver.get("https://www.google.com");
+        driver.get("https://www.amazon.in/");
+        String title="amazon";
+        String Url = driver.getCurrentUrl();
+        if(Url.contains(title)){
+            System.out.println("URL contains" +title);
+        }else{
+            System.out.println("URL does not contains" +title);
+        }
+        
         System.out.println("end Test case: testCase01");
     }
+
+    public void testCase02(String laptop) throws InterruptedException{
+        System.out.println("Start Test case: testCase02");
+        driver.get("https://www.amazon.in/");
+        Thread.sleep(2000); //crio team
+       WebElement searchbar=driver.findElement(By.xpath("//*[@id='twotabsearchtextbox']"));
+       searchbar.sendKeys(laptop);
+       Thread.sleep(2000);
+
+       System.out.println(""+searchbar);
+    //    searchbar.click();
+        driver.findElement(By.id("nav-search-submit-button")).click();  //crio team
+        WebElement laptopDescription=driver.findElement(By.xpath("//*[@id='search']/div[1]/div[1]/div/span[1]/div[1]/div/div/div/div/div/div/div[2]/div/div/div[1]/h2"));
+       ////*[@id='search']/div[1]/div[1]/div/span[1]/div[1]/div/div/div/div/div/div/div[2]/div/div/div[1]/h2
+       System.out.println("1:- "+laptopDescription);
+
+      String laps=laptopDescription.getText();
+      System.out.println("2:- "+laps);
+     
+       if(laps.contains("laptop"));
+       {
+        System.out.println("The product description contains the term laptop");
+       }
+       
+        Thread.sleep(2000);
+        
+        System.out.println("end Test case: testCase02");
+        
+    }
+
+    
+    public void testCase03() throws InterruptedException{
+        System.out.println("Start Test case: testCase03");
+        driver.get("https://www.amazon.in");
+        Thread.sleep(2000);
+        WebElement NavigationMenu=driver.findElement(By.xpath("//*[@id='twotabsearchtextbox']"));
+        Thread.sleep(2000);
+        NavigationMenu.click();
+        Thread.sleep(2000);
+       if(driver.getCurrentUrl().contains("electronics")){
+            System.out.println("the URL contain the expected title Electronics");
+         }
+         Thread.sleep(2000);
+        
+         System.out.println("end Test case: testCase03");
+        }
 
 }
 
